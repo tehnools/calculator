@@ -2,13 +2,16 @@
     width: 443px;
 }
 
-.calculator span input {
+.calculator span input{
     border-radius: 10px;
     border: 1px #e6e6e6 solid;
+    color: transparent;
+    text-shadow: 0 0 0 #4e4e4e;
     height: 5em;
     direction: rtl;
     width: 100%;
     margin-bottom: 1em;
+    font-size: 2em;
 }
 
 .calculator span input:focus {
