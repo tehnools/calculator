@@ -1,3 +1,15 @@
+a, input{
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+a:hover{
+    cursor: pointer;
+}
+
+.section{
+    padding: 2em;
+}
+
 .calculator {
     width: 443px;
 }
