@@ -36,12 +36,13 @@
 }
 
 .calc-body a {
-    color: #444444;
+    color: #333;
     display: flex;
     border-radius: 5px;
     background-color: #e6e6e6;
     align-items: center;
     justify-content: center;
+    font-weight: 400;
 }
 
 .calc-body a:hover{
