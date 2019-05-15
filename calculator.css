@@ -19,7 +19,6 @@ a:hover{
     border: 1px #e6e6e6 solid;
     color: transparent;
     text-shadow: 0 0 0 #4e4e4e;
-    height: 5em;
     direction: rtl;
     width: 100%;
     margin-bottom: 1em;
@@ -62,3 +61,10 @@ a:hover{
     opacity: 0.2;
     color: white;
 }
+
+
+@media (max-width: 600px) {
+    .calculator{
+        width: 100%;
+    }
+  }
