@@ -31,3 +31,18 @@
     grid-template-rows: 50px 50px 50px 50px;
     grid-auto-flow: column;
 }
+
+.calc-body a {
+    color: #444444;
+    display: flex;
+    border-radius: 5px;
+    background-color: #e6e6e6;
+    align-items: center;
+    justify-content: center;
+}
+
+.calc-body a:hover{
+    background-color: black;
+    opacity: 0.2;
+    color: white;
+}
