@@ -82,10 +82,9 @@ a:hover {
 
 .calc-body {
     display: grid;
-    column-gap: 0.5em;
-    row-gap: 0.5em;
-    grid-template-columns: repeat(4);
-    grid-template-rows: 50px 50px 50px 50px 50px;
+    grid-gap: 0.5em;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(5, 50px);
     grid-auto-flow: column;
 }
 
