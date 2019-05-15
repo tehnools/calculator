@@ -1,3 +1,24 @@
 .calculator {
     width: 600px;
 }
+
+.calculator span input {
+    border-radius: 10px;
+    border: 1px #e6e6e6 solid;
+    height: 5em;
+    direction: rtl;
+    width: 100%;
+    margin-bottom: 1em;
+}
+
+.calculator span input:focus {
+    outline-width: 0;
+    border-color: dodgerblue;
+    border-inline-end-width: 1px;
+}
+
+.calculator span input:hover {
+    -moz-box-shadow: inset 0 0 2px #000000;
+    -webkit-box-shadow: inset 0 0 2px #000000;
+    box-shadow: inset 0 0 2px #000000;
+}
