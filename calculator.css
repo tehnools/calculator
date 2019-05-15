@@ -95,11 +95,12 @@ a:hover {
     background-color: #e6e6e6;
     align-items: center;
     justify-content: center;
-    font-weight: 400;
+    font-weight: 500;
 }
 
 .calc-body a.special {
     background-color: #c7c7c7;
+    font-weight: 500;
 }
 
 .calc-body a:hover, .calc-body a.special:hover {
@@ -117,6 +118,8 @@ a.equals:hover{
     background-color: #4e8dd4;
     color: #e6e6e6;
 }
+
+
 
 @media (max-width: 600px) {
     .calculator {
