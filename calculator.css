@@ -98,9 +98,12 @@ a:hover {
     font-weight: 400;
 }
 
-.calc-body a:hover{
-    background-color: black;
-    opacity: 0.2;
+.calc-body a.special {
+    background-color: #c7c7c7;
+}
+
+.calc-body a:hover, .calc-body a.special:hover {
+    background-color: #a1a1a1;
     color: white;
 }
 
