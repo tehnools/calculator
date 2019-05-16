@@ -3,11 +3,18 @@ let TEMP = "";
 let ENTRIES = [];
 let HISTORY = [];
 
-// function inputExpression(value) {
-//     EXPRESSION += value;
-//     updateInput(value);
-//     debugger;
-// }
+function evaluate() {
+    //TODO
+    continue;
+}
+function clearAll() {
+    //TODO
+    continue;
+}
+function clearEntry() {
+    //TODO
+    continue;
+}
 
 // function clearEntry(){
 //     // let resultDisplay = document.querySelector(".calculator .result");
