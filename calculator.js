@@ -79,7 +79,9 @@ function init() {
     input.addEventListener('input', validateInput);
 
     // Check Input
-    document.body.addEventListener('click', validateInput);
+    for (let child of calcBody.children) {
+        child.addEventListener('click', validateInput);
+    }
 }
 
 
