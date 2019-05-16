@@ -2,24 +2,42 @@ let RESULT = 0;
 let EXPRESSION = "";
 let HISTORY = [];
 
-function calculate(expression) {
-
-}
-
 function inputExpression(value) {
     EXPRESSION += value;
+    updateInput(value);
+    debugger;
 }
+
+function clearEntry(){
+    // let resultDisplay = document.querySelector(".calculator .result");
+    let input = document.querySelector(".calc-head input");
+
+    EXPRESSION = "";
+    input.value = ""
 }
 
 function evaluate(){
-    return eval(EXPRESSION);
+    let resultDisplay = document.querySelector(".calculator .result");
+    let total = eval(EXPRESSION);
+    resultDisplay.textContent = total;
+    HISTORY.push(EXPRESSION);
+    clearEntry();
+    debugger;
 }
 
 function validateInput(event){
     const value = event.target.value;
-    let pattern = /([A-Z]*)(?!CE)\w+/;
+    let pattern = /([0-9]|[\/+\-%*)(.])+/;
 
-    if(!value.match(pattern)) inputExpression(value);
+    if(value.match(pattern)){
+        inputExpression(value);
+    } else {
+        event.target.value=""
+    }
+}
+
+function updateInput(value){
+    document.querySelector(".calc-head input").value += value;
 }
 
 
@@ -32,6 +50,9 @@ function init() {
     for(let child of calcBody.children){
         child.addEventListener('click', validateInput);
     }
+
+    let equals = document.querySelector("button.equals");
+    equals.addEventListener('click',evaluate);
 }
 
 
