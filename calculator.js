@@ -44,8 +44,6 @@ function validateInput(event) {
     updateInput("NaN")
 
 }
-//     document.querySelector(".calc-head input").value += value;
-// }
 
 function updateInput(value) {
     document.querySelector(".calc-head input").value = value;
@@ -57,14 +55,6 @@ function init() {
 
     // Check Input
     document.body.addEventListener('click', validateInput);
-    // let calcBody = document.querySelector(".calc-body");
-    // // Add event listners on all buttons except
-    // for(let child of calcBody.children){
-    //     child.addEventListener('click', validateInput);
-    // }
-
-    // let equals = document.querySelector("button.equals");
-    // equals.addEventListener('click',evaluate);
 }
 
 
