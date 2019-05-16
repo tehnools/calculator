@@ -15,7 +15,8 @@ function clearAll() {
     return;
 }
 function clearEntry() {
-    //TODO
+    TEMP = "";
+    updateInput(TEMP);
     return;
 }
 
