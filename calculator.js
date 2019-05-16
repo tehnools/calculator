@@ -27,7 +27,13 @@ function validateInput(event){
 
 function init() {
     let input = document.querySelector(".calc-head input");
-    input.addEventListener('input', inputExpression);
+    input.addEventListener('input', validateInput);
+
+    let calcBody = document.querySelector(".calc-body");
+    // Add event listners on all buttons except
+    for(let child of calcBody.children){
+        child.addEventListener('click', validateInput);
+    }
 }
 
 
