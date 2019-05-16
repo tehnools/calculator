@@ -46,8 +46,8 @@ function validateInput(event) {
         updateInput(TEMP)
     } else if (value.match(regOperators)) {
         // Operators go here
-        ENTRIES.push(TEMP);
-        ENTRIES.push(value);
+        addEntry(value);
+        updateDisplay();
         TEMP = 0;
     } else if(value.match(regEval)){
         // Evaluation and Deletion
@@ -58,6 +58,10 @@ function validateInput(event) {
     }
 }
 
+function addEntry(value) {
+    ENTRIES.push(TEMP);
+    ENTRIES.push(value);
+}
 function updateInput(value) {
     document.querySelector(".calc-head input").value = value;
 }
