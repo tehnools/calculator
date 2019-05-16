@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
         integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
     <link href="calculator.css" rel="stylesheet" type="text/css">
-    
+
 </head>
 
 <body>
@@ -21,34 +21,34 @@
                     <span class="result"></span>
                 </div>
                 <div>
-                    <input type="text" placeholder="0">
+                    <input type="text" placeholder="0" onkeypress="return false;">
                 </div>
             </div>
             <div class="calc-body">
                 <!-- row1 -->
-                <button class="special" value="(">(</button>
+                <!-- <button class="special" value="(">(</button> -->
+                <button value="%" class="special">%</button>
                 <button value="7">7</button>
                 <button value="4">4</button>
                 <button value="1">1</button>
                 <button value="0">0</button>
                 <!-- row2  -->
-                <button value=")" class="special">)</button>
+                <button value="/" class="special">&#247</button>
                 <button value="8">8</button>
                 <button value="5">5</button>
                 <button value="2">2</button>
                 <button value=".">.</button>
                 <!-- row3 -->
-                <button value="%" class="special">%</button>
+                <button value="AC" class="special">AC</button>
                 <button value="9">9</button>
                 <button value="6">6</button>
                 <button value="3">3</button>
                 <button value="=" class="equals">=</button>
                 <!-- row4 -->
                 <button value="CE" class="special">CE</button>
-                <button value="/" class="special">&#247</button>
                 <button value="*" class="special">&times</button>
                 <button value="-" class="special">-</button>
-                <button value="+" class="special">+</button>
+                <button value="+" class="special plus">+</button>
             </div>
         </div>
     </section>
