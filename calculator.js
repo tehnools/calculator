@@ -47,6 +47,9 @@ function validateInput(event) {
 //     document.querySelector(".calc-head input").value += value;
 // }
 
+function updateInput(value) {
+    document.querySelector(".calc-head input").value = value;
+}
 
 function init() {
     let input = document.querySelector(".calc-head input");
