@@ -6,7 +6,7 @@ function calculate(expression) {
 
 }
 
-function inputNumber(event) {
+function inputExpression(event) {
     EXPRESSION += event.target.value;
 }
 
@@ -16,7 +16,7 @@ function inputChange(event) {
 
 function init() {
     let input = document.querySelector(".calc-head input");
-    input.addEventListener('input', inputChange);
+    input.addEventListener('input', inputExpression);
 }
 
 
