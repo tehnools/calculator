@@ -32,24 +32,26 @@ function sortEval(value){
 
 function validateInput(event) {
     const value = event.target.value;
+
+    //REGEX
     const regOperators = /[\/*%+\-]/;
     const regEval = /[CE|AC|=]/
 
     if (!isNaN(value)) {
         TEMP += value;
-        debugger;
         updateInput(TEMP)
     } else if (value.match(regOperators)) {
+        // Operators go here
         ENTRIES.push(TEMP);
         ENTRIES.push(value);
         TEMP = 0;
-        debugger;
     } else if(value.match(regEval)){
+        // Evaluation and Deletion
         sortEval(value);
     } else {
+        // All Invalid values
         updateInput("NaN")
     }
-
 }
 
 function updateInput(value) {
