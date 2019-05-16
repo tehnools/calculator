@@ -14,6 +14,9 @@ function inputChange(event) {
     EXPRESSION = event.text.content;
 }
 
+function evaluate(){
+    return eval(EXPRESSION);
+}
 function init() {
     let input = document.querySelector(".calc-head input");
     input.addEventListener('input', inputExpression);
