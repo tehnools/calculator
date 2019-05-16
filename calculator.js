@@ -17,6 +17,14 @@ function inputChange(event) {
 function evaluate(){
     return eval(EXPRESSION);
 }
+
+function validateInput(event){
+    const value = event.target.value;
+    let pattern ="";
+
+    //TODO
+}
+
 function init() {
     let input = document.querySelector(".calc-head input");
     input.addEventListener('input', inputExpression);
