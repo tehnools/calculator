@@ -16,43 +16,34 @@ function clearEntry() {
     continue;
 }
 
-// function clearEntry(){
-//     // let resultDisplay = document.querySelector(".calculator .result");
-//     let input = document.querySelector(".calc-head input");
-
-//     EXPRESSION = "";
-//     input.value = ""
-// }
-
-// function evaluate(){
-//     let resultDisplay = document.querySelector(".calculator .result");
-//     let total = eval(EXPRESSION);
-//     resultDisplay.textContent = total;
-//     HISTORY.push(EXPRESSION);
-//     clearEntry();
-//     debugger;
-// }
-
-function validateInput(event){
+function validateInput(event) {
     const value = event.target.value;
-    // let pattern = /([0-9]|[\/+\-%*)(.])+/;
-    debugger;
-   if (!isNaN(value)){
-       TEMP = value;
-   } else{
-       switch(value){
-           case "/":
-           case "*":
-           case "+":
-           case "-":
-           case "=":
-           case "AC":
-           case "CE":
-       }
-   }
-}
+    const reg = /[\/*%+\-]/;
 
-// function updateInput(value){
+    if (!isNaN(value)) {
+        TEMP += value;
+        updateInput(TEMP)
+    } else if (value.match(reg)) {
+        ENTRIES.push(TEMP);
+        ENTRIES.push(value);
+        TEMP = 0;
+        debugger;
+    } else {
+        switch (value) {
+            case "=":
+                evaluate();
+                break;
+            case "AC":
+                clearAll();
+                break;
+            case "CE":
+                clearEntry();
+                break;
+        }
+    }
+    updateInput("NaN")
+
+}
 //     document.querySelector(".calc-head input").value += value;
 // }
 
