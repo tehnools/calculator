@@ -20,10 +20,11 @@ function evaluate(){
 
 function validateInput(event){
     const value = event.target.value;
-    let pattern ="";
+    let pattern = /([A-Z]*)(?!CE)\w+/;
 
-    //TODO
+    if(!value.match(pattern)) inputExpression(value);
 }
+
 
 function init() {
     let input = document.querySelector(".calc-head input");
