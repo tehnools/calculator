@@ -8,7 +8,10 @@ function evaluate() {
     return;
 }
 function clearAll() {
-    //TODO
+    ENTRIES = []
+    TOTAL = 0;
+    clearEntry();
+    clearDisplay();
     return;
 }
 function clearEntry() {
