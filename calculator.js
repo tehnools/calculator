@@ -5,15 +5,15 @@ let HISTORY = [];
 
 function evaluate() {
     //TODO
-    continue;
+    return;
 }
 function clearAll() {
     //TODO
-    continue;
+    return;
 }
 function clearEntry() {
     //TODO
-    continue;
+    return;
 }
 
 function validateInput(event) {
