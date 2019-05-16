@@ -16,32 +16,39 @@ function clearEntry() {
     return;
 }
 
+function sortEval(value){
+    switch (value) {
+        case "=":
+            evaluate();
+            break;
+        case "AC":
+            clearAll();
+            break;
+        case "CE":
+            clearEntry();
+            break;
+    }
+}
+
 function validateInput(event) {
     const value = event.target.value;
-    const reg = /[\/*%+\-]/;
+    const regOperators = /[\/*%+\-]/;
+    const regEval = /[CE|AC|=]/
 
     if (!isNaN(value)) {
         TEMP += value;
+        debugger;
         updateInput(TEMP)
-    } else if (value.match(reg)) {
+    } else if (value.match(regOperators)) {
         ENTRIES.push(TEMP);
         ENTRIES.push(value);
         TEMP = 0;
         debugger;
+    } else if(value.match(regEval)){
+        sortEval(value);
     } else {
-        switch (value) {
-            case "=":
-                evaluate();
-                break;
-            case "AC":
-                clearAll();
-                break;
-            case "CE":
-                clearEntry();
-                break;
-        }
+        updateInput("NaN")
     }
-    updateInput("NaN")
 
 }
 
