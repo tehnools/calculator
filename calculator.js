@@ -36,9 +36,8 @@ function sortEval(value){
 
 function validateInput(event) {
     const value = event.target.value;
-
     //REGEX
-    const regOperators = /[\/*%+\-]/;
+    const regOperators = /[\/*%.+\-]/;
     const regEval = /[CE|AC|=]/
 
     if (!isNaN(value)) {
