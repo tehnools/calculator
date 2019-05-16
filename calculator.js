@@ -6,12 +6,9 @@ function calculate(expression) {
 
 }
 
-function inputExpression(event) {
-    EXPRESSION += event.target.value;
+function inputExpression(value) {
+    EXPRESSION += value;
 }
-
-function inputChange(event) {
-    EXPRESSION = event.text.content;
 }
 
 function evaluate(){
