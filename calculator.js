@@ -4,7 +4,8 @@ let ENTRIES = [];
 let HISTORY = [];
 
 function evaluate() {
-    //TODO
+    ENTRIES.reverse()
+   
     return;
 }
 
