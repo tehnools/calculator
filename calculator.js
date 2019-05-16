@@ -7,6 +7,7 @@ function evaluate() {
     //TODO
     return;
 }
+
 function clearAll() {
     ENTRIES = []
     TOTAL = 0;
@@ -14,13 +15,14 @@ function clearAll() {
     clearDisplay();
     return;
 }
+
 function clearEntry() {
     TEMP = "";
     updateInput(TEMP);
     return;
 }
 
-function sortEval(value){
+function sortEval(value) {
     switch (value) {
         case "=":
             evaluate();
@@ -47,8 +49,9 @@ function validateInput(event) {
         // Operators go here
         addEntry(value);
         updateDisplay();
-        TEMP = 0;
-    } else if(value.match(regEval)){
+        TEMP = "";
+        updateInput(TEMP);
+    } else if (value.match(regEval)) {
         // Evaluation and Deletion
         sortEval(value);
     } else {
@@ -61,6 +64,7 @@ function addEntry(value) {
     ENTRIES.push(TEMP);
     ENTRIES.push(value);
 }
+
 function updateInput(value) {
     document.querySelector(".calc-head input").value = value;
 }
@@ -74,7 +78,9 @@ function clearDisplay() {
     let resultDisplay = document.querySelector('.result');
     resultDisplay.textContent = "";
 }
+
 function init() {
+    let calcBody = document.querySelector('.calc-body');
     let input = document.querySelector(".calc-head input");
     input.addEventListener('input', validateInput);
 
@@ -83,6 +89,5 @@ function init() {
         child.addEventListener('click', validateInput);
     }
 }
-
 
 init();
