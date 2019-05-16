@@ -62,6 +62,10 @@ function updateInput(value) {
     document.querySelector(".calc-head input").value = value;
 }
 
+function clearDisplay() {
+    let resultDisplay = document.querySelector('.result');
+    resultDisplay.textContent = "";
+}
 function init() {
     let input = document.querySelector(".calc-head input");
     input.addEventListener('input', validateInput);
