@@ -21,11 +21,11 @@ button:hover {
 }
 
 .calculator {
-    width: 443px;
+    width: 400px;
 }
 
 .calc-head {
-    width: 443px;
+    width: 400px;
     height: 85px;
     display: grid;
     padding: 2px;
@@ -107,9 +107,13 @@ button:hover {
     font-weight: 500;
 }
 
-.calc-body button:hover, .calc-body a.special:hover {
+.calc-body button:hover, .calc-body button.special:hover {
     background-color: #a1a1a1;
     color: white;
+}
+
+.calc-body button.plus{
+    grid-row: 4/6;
 }
 
 button.equals {
@@ -123,8 +127,3 @@ button.equals:hover {
     color: #e6e6e6;
 }
 
-@media (max-width: 600px) {
-    .calculator {
-        width: 100%;
-    }
-}
