@@ -1,5 +1,6 @@
-let RESULT = 0;
+let TOTAL = 0;
 let TEMP = "";
+let ENTRIES = [];
 let HISTORY = [];
 
 // function inputExpression(value) {
