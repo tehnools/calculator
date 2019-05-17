@@ -92,6 +92,11 @@ function validateInput(event) {
         // Evaluation and Deletion
         sortEval(value);
     } else {
+    } else if (value === '.') {
+        TEMP += '.'
+        updateInput(TEMP)
+    }
+    else {
         // All Invalid values
         updateInput("NaN")
     }
