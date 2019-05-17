@@ -95,12 +95,12 @@ function clearDisplay() {
 function clearAll() {
     ENTRIES = []
     TOTAL = 0;
-    clearEntry();
+    clearInput();
     clearDisplay();
     return;
 }
 
-function clearEntry() {
+function clearInput() {
     TEMP = "";
     updateInput(TEMP);
     return;
