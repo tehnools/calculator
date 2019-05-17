@@ -3,23 +3,33 @@ let TEMP = "";
 let ENTRIES = [];
 let HISTORY = [];
 
+
 function evaluate() {
-    ENTRIES.reverse()
-   
-    return;
-}
+    let entries = ENTRIES;
 
-function clearAll() {
-    ENTRIES = []
-    TOTAL = 0;
-    clearEntry();
-    clearDisplay();
-    return;
-}
+    calculate = (op)=>{
+        let i = entries.indexOf(op)
+        let a = Number(entries[i-1])
+        let b = Number(entries[i+1])
+        let ans = a + b;
+        entries.splice(i+2,0, ans);
+        entries.splice(i-1,3);
+    }
 
-function clearEntry() {
-    TEMP = "";
-    updateInput(TEMP);
+    let finalAns = 0;
+    while (entries.length > 0) {
+        if (entries.length === 1) finalAns = entries.pop();
+        
+        if(entries.includes("*") || entries.includes("*")){
+            calculate("*");
+        } else if(entries.includes("+")){
+            calculate("+");
+        }
+        debugger;
+        break;
+    }
+    debugger;
+
     return;
 }
 
