@@ -91,7 +91,9 @@ function validateInput(event) {
     } else if (value.match(regEval)) {
         // Evaluation and Deletion
         sortEval(value);
-    } else {
+    } else if (value === "%") {
+        TEMP = TEMP / 100;
+        updateInput(TEMP);
     } else if (value === '.') {
         TEMP += '.'
         updateInput(TEMP)
