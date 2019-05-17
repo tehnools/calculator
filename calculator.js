@@ -59,8 +59,10 @@ function sortEval(value) {
         updateDisplay();
         clearInput();
         ENTRIES = [];
+        TEMP = TOTAL;
         TOTAL = 0;
         HISTORY.push(TOTAL)
+        updateInput(TEMP);
     }
 
     switch (value) {
@@ -119,7 +121,7 @@ function updateInput(value) {
 
 function updateDisplay() {
     let resultDisplay = document.querySelector('.result');
-    resultDisplay.textContent = ENTRIES.join(" ") + " = " + TOTAL;
+    resultDisplay.textContent = ENTRIES.join(" ") + " = ";
 }
 
 function clearDisplay() {
