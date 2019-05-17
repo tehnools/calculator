@@ -87,8 +87,7 @@ function validateInput(event) {
         // Operators go here
         addEntry(value);
         updateDisplay();
-        TEMP = "";
-        updateInput(TEMP);
+        clearInput();
     } else if (value.match(regEval)) {
         // Evaluation and Deletion
         sortEval(value);
