@@ -1,8 +1,10 @@
 # Calculator
 
-This is the repository that will hold your files for the calculator challenge.
+This is my cacluator app
 
-During this challenge you will:
-1. Fork this repo
-2. Make changes on your own copy
-3. Send a pull request back to dev-academy-foundations/calculator with your updates
+Inspired by Google's caculator made with CSS GRID
+
+What it can do?
+
+-Can do order of operations without brackets
+-Can Clear All and Clear Entry
