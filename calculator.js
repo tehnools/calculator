@@ -49,6 +49,16 @@ function evaluate() {
 }
 
 function sortEval(value) {
+
+    completeEval = () => {
+        TOTAL = evaluate();
+        updateDisplay();
+        clearInput();
+        ENTRIES = [];
+        TOTAL = 0;
+        HISTORY.push(TOTAL)
+    }
+
     switch (value) {
         case "=":
             if (!isNaN(TEMP)) ENTRIES.push(TEMP);
