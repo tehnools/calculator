@@ -59,8 +59,10 @@ function sortEval(value) {
         updateDisplay();
         clearInput();
         ENTRIES = [];
+        TEMP = TOTAL;
         TOTAL = 0;
         HISTORY.push(TOTAL)
+        updateInput(TEMP);
     }
 
     switch (value) {
