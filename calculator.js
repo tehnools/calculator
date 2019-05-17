@@ -25,7 +25,11 @@ function evaluate() {
     }
 
     divide = (i) => {
-        return Number(entries[i - 1]) / Number(entries[i + 1]);
+        let answer = Number(entries[i - 1]) / Number(entries[i + 1]);
+        if (typeof answer === 'number' && !Number.isInteger(answer)) {
+            return answer.toFixed(4);
+        }
+        return answer;
     }
 
     let i = -1;
