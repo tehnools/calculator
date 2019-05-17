@@ -80,6 +80,20 @@ function clearDisplay() {
     resultDisplay.textContent = "";
 }
 
+function clearAll() {
+    ENTRIES = []
+    TOTAL = 0;
+    clearEntry();
+    clearDisplay();
+    return;
+}
+
+function clearEntry() {
+    TEMP = "";
+    updateInput(TEMP);
+    return;
+}
+
 function init() {
     let calcBody = document.querySelector('.calc-body');
     let input = document.querySelector(".calc-head input");
