@@ -5,32 +5,47 @@ let HISTORY = [];
 
 
 function evaluate() {
-    let entries = ENTRIES;
+    let entries = [...ENTRIES];
 
-    calculate = (op)=>{
-        let i = entries.indexOf(op)
-        let a = Number(entries[i-1])
-        let b = Number(entries[i+1])
-        let ans = a + b;
-        entries.splice(i+2,0, ans);
-        entries.splice(i-1,3);
+    removeEntry = (index, answer) => {
+        entries.splice(index + 2, 0, answer);
+        entries.splice(index - 1, 3);
     }
 
-    let finalAns = 0;
-    while (entries.length > 0) {
-        if (entries.length === 1) finalAns = entries.pop();
-        
-        if(entries.includes("*") || entries.includes("*")){
-            calculate("*");
-        } else if(entries.includes("+")){
-            calculate("+");
+    sum = (i) => {
+        return Number(entries[i - 1]) + Number(entries[i + 1]);
+    }
+
+    diff = (i) => {
+        return Number(entries[i - 1]) - Number(entries[i + 1]);
+    }
+
+    multiply = (i) => {
+        return Number(entries[i - 1]) * Number(entries[i + 1]);
+    }
+
+    divide = (i) => {
+        return Number(entries[i - 1]) / Number(entries[i + 1]);
+    }
+
+    let i = -1;
+    while (entries.length > 1) {
+        if (entries.includes("*")) {
+            i = entries.indexOf("*");
+            removeEntry(i, multiply(i))
+        } else if (entries.includes("/")) {
+            i = entries.indexOf("/");
+            removeEntry(i, divide(i))
         }
-        debugger;
-        break;
+        else if (entries.includes("+")) {
+            i = entries.indexOf("+")
+            removeEntry(i, sum(i))
+        } else if (entries.includes("-")) {
+            i = entries.indexOf("-")
+            removeEntry(i, diff(i))
+        }
     }
-    debugger;
-
-    return;
+    return entries.pop();
 }
 
 function sortEval(value) {
