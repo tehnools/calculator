@@ -53,13 +53,13 @@ function sortEval(value) {
         case "=":
             if (!isNaN(TEMP)) ENTRIES.push(TEMP);
             if (!isNaN(ENTRIES[-1])) ENTRIES.splice(-1, 1);
-            evaluate();
+            completeEval();
             break;
         case "AC":
             clearAll();
             break;
         case "CE":
-            clearEntry();
+            clearInput();
             break;
     }
 }
