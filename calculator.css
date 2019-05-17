@@ -1,4 +1,8 @@
-button, input, span , h1{
+body{
+    display: grid;
+    justify-content: center;
+}
+button, input, span, h1 {
     font-family: 'Roboto', sans-serif;
 }
 
@@ -17,7 +21,7 @@ button:hover {
 }
 
 .section {
-    padding: 2em;
+    padding: 1em;
 }
 
 .calculator {
@@ -112,7 +116,7 @@ button:hover {
     color: white;
 }
 
-.calc-body button.plus{
+.calc-body button.plus {
     grid-row: 4/6;
 }
 
@@ -127,3 +131,51 @@ button.equals:hover {
     color: #e6e6e6;
 }
 
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+    .calculator {
+        width: 80vw;
+    }
+    .calc-head {
+        width: 80vw;
+    }
+
+    .calc-body {
+        grid-template-rows: repeat(5, 75px);
+    }
+    .calc-body button {
+        font-size: 2em;
+        padding: 0;
+    }
+} 
+
+/* for tablet */
+/* @media only screen and (min-width: 600px) {
+    .calculator {
+        width: 80vw;
+    }
+    .calc-head {
+        width: 80vw;
+    }
+    .calc-body {
+        grid-template-rows: repeat(5, 75px);
+    }
+    .calc-body button {
+        font-size: 2em;
+        padding: 0;
+    }
+}
+
+@media only screen and (min-width: 768px) {
+    .calculator {
+        width: 40vw;
+    }
+    .calc-head {
+        width: 40vw;
+    }
+
+    .calc-body {
+        grid-template-rows: repeat(5, 50px);
+    }
+} */
