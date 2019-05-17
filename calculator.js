@@ -26,6 +26,8 @@ function clearEntry() {
 function sortEval(value) {
     switch (value) {
         case "=":
+            if (!isNaN(TEMP)) ENTRIES.push(TEMP);
+            if (!isNaN(ENTRIES[-1])) ENTRIES.splice(-1, 1);
             evaluate();
             break;
         case "AC":
