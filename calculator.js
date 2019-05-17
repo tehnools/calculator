@@ -108,7 +108,7 @@ function updateInput(value) {
 
 function updateDisplay() {
     let resultDisplay = document.querySelector('.result');
-    resultDisplay.textContent = ENTRIES.join(" ");
+    resultDisplay.textContent = ENTRIES.join(" ") + " = " + TOTAL;
 }
 
 function clearDisplay() {
