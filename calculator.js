@@ -62,7 +62,11 @@ function sortEval(value) {
         TEMP = TOTAL;
         TOTAL = 0;
         HISTORY.push(TOTAL)
-        updateInput(TEMP);
+        if (typeof TEMP && !Number.isInteger(TEMP)) {
+            updateInput(TEMP.toFixed(4))
+        } else {
+            updateInput(TEMP);
+        }
     }
 
     switch (value) {
