@@ -69,12 +69,47 @@ button:hover {
     color: #333;
 }
 
-.calc-head-top:visited {
-    color: initial;
+.calc-head-top .fa.fa-history:visited {
+    color: #333;
 }
 
 .calc-head-top .result {
     justify-self: end;
+}
+
+.calc-history{
+    background-color: white;
+    display: grid;
+    width: auto;
+    max-width: 20vh;
+    border-radius: 10px;
+    border: 1px solid #e6e6e6;
+    grid-template-rows: 10px;
+    position: absolute;
+}
+
+.history-card{
+    display: inline-flex;
+    color: #333;
+    padding: 1em; 
+}
+
+.history-card .tag{
+    padding: 3px 5px;
+    height: 20px;
+    align-items: center;
+    border: 1px solid #e6e6e6;
+    border-radius: 5px;
+}
+
+.history-card .history-btn{
+    justify-self: start;
+}
+
+.history-card span{
+    margin: 0  1em;
+    font-weight: bold;
+    color: #4e4e4e;
 }
 
 .calculator input {
