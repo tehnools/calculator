@@ -82,7 +82,8 @@ button:hover {
     border: none;
     color: transparent;
     text-shadow: 0 0 0 #4e4e4e;
-    direction: rtl;
+    direction: left;
+    text-align: right;
     width: 100%;
     font-size: 2em;
     float: bottom;
