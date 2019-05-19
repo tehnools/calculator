@@ -89,24 +89,31 @@ button:hover {
     background-color: white;
     width: auto;
     display: grid;
-    max-width: 40vh;
+    max-width: 30vh;
     min-width: 10vh;
     min-height: 50px;
     border-radius: 10px;
     border: 1px solid #e6e6e6;
+    grid-template-columns: 100%;
     grid-template-rows: 10px;
     position: absolute;
+    grid-gap: 0.5em;
     overflow-x: hidden;
 }
 
 .calc-history button{
-    z-index: 10;;
+    z-index: 10;
+}
+
+.history{
+    display: grid;
+    grid-gap: 0.25em;
 }
 
 .history-card {
     display: inline-flex;
     color: #333;
-    padding: 1em;
+    padding: 0.5em;
 }
 
 .history-card .tag {
