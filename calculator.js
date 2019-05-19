@@ -46,10 +46,30 @@ function buildHistoryCard(leftTag, equals, rightTag) {
     return historyCard;
 }
 
+function updateHistory() {
+    // Ensure history div is always Empty
+    let history = document.querySelector(".history");
+    history.innerHTML = "";
+    for (let calculation of HISTORY) {
+        let leftTag = document.createElement('a');
+        leftTag.className = "tag";
+        leftTag.textContent = calculation.equation;
+        let equals = document.createElement('span');
+        equals.textContent = "=";
+        let rightTag = document.createElement('a');
+        rightTag.className = "tag";
+        rightTag.textContent = calculation.total;
+        // Append History to history parent
+        let historyCard = buildHistoryCard(leftTag, equals, rightTag);
+        history.append(historyCard);
+    }
+}
+
 function toggleHistory() {
     let calcHistory = document.querySelector(".calc-history");
     calcHistory.classList.toggle('hidden');
 }
+
 // Clears Whole Display
 function clearAll() {
     ENTRIES = []
