@@ -36,6 +36,15 @@ function clearDisplay() {
     resultDisplay.textContent = "";
 }
 
+// Builds History Card
+function buildHistoryCard(leftTag, equals, rightTag) {
+    let historyCard = document.createElement('div');
+    historyCard.className = "history-card";
+    historyCard.appendChild(leftTag);
+    historyCard.appendChild(equals);
+    historyCard.appendChild(rightTag);
+    return historyCard;
+}
 
 function toggleHistory() {
     let calcHistory = document.querySelector(".calc-history");
