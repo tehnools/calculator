@@ -1,7 +1,8 @@
-body{
+body {
     display: grid;
     justify-content: center;
 }
+
 button, input, span, h1 {
     font-family: 'Roboto', sans-serif;
 }
@@ -57,8 +58,12 @@ button:hover {
     color: #4e4e4e;
 }
 
-.calc-head-top a {
+.calc-head-top button{
     justify-self: start;
+    width: 1em;
+    height: 1em;
+    background-color: white;
+    cursor: pointer;
 }
 
 .calc-head-top li {
@@ -73,28 +78,45 @@ button:hover {
     color: #333;
 }
 
+
+
 .calc-head-top .result {
     justify-self: end;
 }
 
-.calc-history{
+.calc-history {
+    z-index: 2;
     background-color: white;
-    display: grid;
     width: auto;
-    max-width: 20vh;
+    display: grid;
+    max-width: 30vh;
+    min-width: 10vh;
+    min-height: 50px;
     border-radius: 10px;
     border: 1px solid #e6e6e6;
+    grid-template-columns: 100%;
     grid-template-rows: 10px;
     position: absolute;
+    grid-gap: 0.5em;
+    overflow-x: hidden;
 }
 
-.history-card{
+.calc-history button{
+    z-index: 10;
+}
+
+.history{
+    display: grid;
+    grid-gap: 0.25em;
+}
+
+.history-card {
     display: inline-flex;
     color: #333;
-    padding: 1em; 
+    padding: 0.5em;
 }
 
-.history-card .tag{
+.history-card .tag {
     padding: 3px 5px;
     height: 20px;
     align-items: center;
@@ -102,12 +124,8 @@ button:hover {
     border-radius: 5px;
 }
 
-.history-card .history-btn{
-    justify-self: start;
-}
-
-.history-card span{
-    margin: 0  1em;
+.history-card span {
+    margin: 0 1em;
     font-weight: bold;
     color: #4e4e4e;
 }
@@ -167,27 +185,12 @@ button.equals:hover {
     color: #e6e6e6;
 }
 
+.hidden {
+    display: none;
+}
 
 /* Extra small devices (phones, 600px and down) */
 @media screen and (max-width: 600px) {
-    .calculator {
-        width: 80vw;
-    }
-    .calc-head {
-        width: 80vw;
-    }
-
-    .calc-body {
-        grid-template-rows: repeat(5, 75px);
-    }
-    .calc-body button {
-        font-size: 2em;
-        padding: 0;
-    }
-} 
-
-/* for tablet */
-/* @media only screen and (min-width: 600px) {
     .calculator {
         width: 80vw;
     }
@@ -202,16 +205,3 @@ button.equals:hover {
         padding: 0;
     }
 }
-
-@media only screen and (min-width: 768px) {
-    .calculator {
-        width: 40vw;
-    }
-    .calc-head {
-        width: 40vw;
-    }
-
-    .calc-body {
-        grid-template-rows: repeat(5, 50px);
-    }
-} */

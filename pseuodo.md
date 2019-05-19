@@ -20,6 +20,7 @@ calculate(inputString){
                     <div class="calc-head-top">
                         <a href="" class="history-btn"><span class="fas fa-history"></span></a>
                     </div>
+                    
                     <div class="history-card">
                         <a class="tag">6</a>
                         <span>=</span>

@@ -4,6 +4,14 @@ let TEMP = "";
 let ENTRIES = [];
 let HISTORY = [];
 
+
+// History Object
+// {
+//     equation: String,
+//     total: Number
+// }
+
+
 // Push value to Entry
 function addEntry(value) {
     ENTRIES.push(TEMP);
@@ -28,6 +36,40 @@ function clearDisplay() {
     resultDisplay.textContent = "";
 }
 
+// Builds History Card
+function buildHistoryCard(leftTag, equals, rightTag) {
+    let historyCard = document.createElement('div');
+    historyCard.className = "history-card";
+    historyCard.appendChild(leftTag);
+    historyCard.appendChild(equals);
+    historyCard.appendChild(rightTag);
+    return historyCard;
+}
+
+function updateHistory() {
+    // Ensure history div is always Empty
+    let history = document.querySelector(".history");
+    history.innerHTML = "";
+    for (let calculation of HISTORY) {
+        let leftTag = document.createElement('a');
+        leftTag.className = "tag";
+        leftTag.textContent = calculation.equation;
+        let equals = document.createElement('span');
+        equals.textContent = "=";
+        let rightTag = document.createElement('a');
+        rightTag.className = "tag";
+        rightTag.textContent = calculation.total;
+        // Append History to history parent
+        let historyCard = buildHistoryCard(leftTag, equals, rightTag);
+        history.append(historyCard);
+    }
+}
+
+function toggleHistory() {
+    let calcHistory = document.querySelector(".calc-history");
+    calcHistory.classList.toggle('hidden');
+}
+
 // Clears Whole Display
 function clearAll() {
     ENTRIES = []
@@ -49,7 +91,7 @@ function clearInput() {
 function evaluate() {
     let entries = [...ENTRIES];
 
-    // Remove Entry
+    // Remove Entry based on operator index
     removeEntry = (index, answer) => {
         entries.splice(index + 2, 0, answer);
         entries.splice(index - 1, 3);
@@ -75,23 +117,36 @@ function evaluate() {
         return answer;
     }
 
-    // Perform calculation till evaluations is length 1
-    let i = -1;
+    // When Entries length === 1 result is computed
     while (entries.length > 1) {
-        if (entries.includes("*")) {
-            i = entries.indexOf("*");
-            removeEntry(i, multiply(i))
-        } else if (entries.includes("/")) {
-            i = entries.indexOf("/");
-            removeEntry(i, divide(i))
+        // Calculate in Order of left to right according to bedmas
+        for (let i = 0; i < entries.length; i++) {
+            if (!entries.includes("*") && !entries.includes("/")) {
+                switch (entries[i]) {
+                    case "+":
+                        removeEntry(i, sum(i))
+                        break;
+                    case "-":
+                        removeEntry(i, diff(i))
+                        break;
+                    default:
+                        continue;
+                }
+            } else {
+                switch (entries[i]) {
+                    case "*":
+                        removeEntry(i, multiply(i))
+                        break;
+                    case "/":
+                        removeEntry(i, divide(i))
+                        break;
+                    default:
+                        continue;
+                }
+            }
         }
-        else if (entries.includes("+")) {
-            i = entries.indexOf("+")
-            removeEntry(i, sum(i))
-        } else if (entries.includes("-")) {
-            i = entries.indexOf("-")
-            removeEntry(i, diff(i))
-        }
+
+
     }
     return entries.pop();
 }
@@ -101,15 +156,28 @@ function validateInput(event) {
     // Get button value
     const value = event.target.value;
 
+    addHistory = () => {
+        HISTORY.push(
+            {
+                equation: ENTRIES.join(" "),
+                total: TOTAL
+            })
+    }
+
     // Completes evaluation
     completeEval = () => {
         TOTAL = evaluate();
         updateDisplay();
         clearInput();
+        // Add history and Update It.
+        addHistory();
+        updateHistory()
         ENTRIES = [];
+        // Set TEMP to TOTAL
         TEMP = TOTAL;
+        // Add to history
         TOTAL = 0;
-        HISTORY.push(TOTAL)
+
 
         // Updates Input to Answer
         if (typeof TEMP === Number && !Number.isInteger(TEMP)) {
@@ -152,7 +220,7 @@ function validateInput(event) {
                 clearAll();
                 break;
             case "=":
-                // Removes rougle operators
+                // Removes rogue operators
                 if (!isNaN(TEMP)) ENTRIES.push(TEMP);
                 if (!isNaN(ENTRIES[-1])) ENTRIES.splice(-1, 1);
                 // Complete Evaluation
