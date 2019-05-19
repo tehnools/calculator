@@ -4,6 +4,14 @@ let TEMP = "";
 let ENTRIES = [];
 let HISTORY = [];
 
+
+// History Object
+// {
+//     equation: String,
+//     total: Number
+// }
+
+
 // Push value to Entry
 function addEntry(value) {
     ENTRIES.push(TEMP);
