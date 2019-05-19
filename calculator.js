@@ -48,7 +48,7 @@ function clearInput() {
 // Performs evaluation of all entries follwing EDMAS
 function evaluate() {
     let entries = [...ENTRIES];
-    
+
     // Remove Entry based on operator index
     removeEntry = (index, answer) => {
         entries.splice(index + 2, 0, answer);
@@ -75,36 +75,36 @@ function evaluate() {
         return answer;
     }
 
+    // When Entries length === 1 result is computed
     while (entries.length > 1) {
-        if (!entries.includes("*") && !entries.includes("/")) {
-            for (let entry of entries) {
-                let i = entries.indexOf(entry);
-                switch (entry) {
+        // Calculate in Order of left to right according to bedmas
+        for (let i = 0; i < entries.length; i++) {
+            if (!entries.includes("*") && !entries.includes("/")) {
+                switch (entries[i]) {
                     case "+":
                         removeEntry(i, sum(i))
                         break;
                     case "-":
-                        removeEntry(entries.indexOf(entry), diff(i))
+                        removeEntry(i, diff(i))
                         break;
                     default:
                         continue;
                 }
-            }
-        } else {
-            for (let entry of entries) {
-                let i = entries.indexOf(entry);
-                switch (entry) {
+            } else {
+                switch (entries[i]) {
                     case "*":
-                        removeEntry(entries.indexOf(entry), multiply(i))
+                        removeEntry(i, multiply(i))
                         break;
                     case "/":
-                        removeEntry(entries.indexOf(entry), divide(i))
+                        removeEntry(i, divide(i))
                         break;
                     default:
                         continue;
                 }
             }
         }
+
+
     }
     return entries.pop();
 }
@@ -169,7 +169,7 @@ function validateInput(event) {
                 if (!isNaN(TEMP)) ENTRIES.push(TEMP);
                 if (!isNaN(ENTRIES[-1])) ENTRIES.splice(-1, 1);
                 // Complete Evaluation
-                
+
                 completeEval();
                 break;
             case "%":
