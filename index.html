@@ -18,8 +18,14 @@
         <h1>Made with CSS GRID</h1>
         <div class="calculator">
             <div class="calc-head">
+                <div class="calc-history hidden">
+                    <div class="calc-head-top">
+                        <button onclick="toggleHistory()"><span class="fas fa-history"></span></button>
+                    </div>
+                    <div class="history"></div>
+                </div>
                 <div class="calc-head-top">
-                    <a href=""><span class="fas fa-history"></span></a>
+                    <button onclick="toggleHistory()"><span class="fas fa-history"></span></button>
                     <span class="result"></span>
                 </div>
                 <div>
