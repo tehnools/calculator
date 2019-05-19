@@ -165,11 +165,10 @@ function validateInput(event) {
                 clearAll();
                 break;
             case "=":
-                // Removes rougle operators
+                // Removes rogue operators
                 if (!isNaN(TEMP)) ENTRIES.push(TEMP);
                 if (!isNaN(ENTRIES[-1])) ENTRIES.splice(-1, 1);
                 // Complete Evaluation
-
                 completeEval();
                 break;
             case "%":
