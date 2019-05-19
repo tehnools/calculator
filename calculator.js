@@ -5,12 +5,46 @@ let ENTRIES = [];
 let HISTORY = [];
 
 // Push value to Entry
+function addEntry(value) {
+    ENTRIES.push(TEMP);
+    ENTRIES.push(value);
+}
+
 
 // Change value of Display Input
+function updateInput(value) {
+    document.querySelector(".calc-head input").value = value;
+}
+
 // Update result Display on top of Input
+function updateDisplay() {
+    let resultDisplay = document.querySelector('.result');
+    resultDisplay.textContent = ENTRIES.join(" ") + " = ";
+}
+
 // Clears The top display
+function clearDisplay() {
+    let resultDisplay = document.querySelector('.result');
+    resultDisplay.textContent = "";
+}
+
 // Clears Whole Display
+function clearAll() {
+    ENTRIES = []
+    TOTAL = 0;
+    clearInput();
+    clearDisplay();
+    return;
+}
+
 // Clears all Input
+function clearInput() {
+    TEMP = "";
+    updateInput(TEMP);
+    return;
+}
+
+
 // Performs evaluation of all entries follwing EDMAS
 function evaluate() {
     let entries = [...ENTRIES];
