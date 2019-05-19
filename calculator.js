@@ -122,15 +122,28 @@ function validateInput(event) {
     // Get button value
     const value = event.target.value;
 
+    addHistory = () => {
+        HISTORY.push(
+            {
+                equation: ENTRIES.join(" "),
+                total: TOTAL
+            })
+    }
+
     // Completes evaluation
     completeEval = () => {
         TOTAL = evaluate();
         updateDisplay();
         clearInput();
+        // Add history and Update It.
+        addHistory();
+        updateHistory()
         ENTRIES = [];
+        // Set TEMP to TOTAL
         TEMP = TOTAL;
+        // Add to history
         TOTAL = 0;
-        HISTORY.push(TOTAL)
+
 
         // Updates Input to Answer
         if (typeof TEMP === Number && !Number.isInteger(TEMP)) {
