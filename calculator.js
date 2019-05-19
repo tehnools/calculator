@@ -36,6 +36,11 @@ function clearDisplay() {
     resultDisplay.textContent = "";
 }
 
+
+function toggleHistory() {
+    let calcHistory = document.querySelector(".calc-history");
+    calcHistory.classList.toggle('hidden');
+}
 // Clears Whole Display
 function clearAll() {
     ENTRIES = []
