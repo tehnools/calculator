@@ -48,8 +48,8 @@ function clearInput() {
 // Performs evaluation of all entries follwing EDMAS
 function evaluate() {
     let entries = [...ENTRIES];
-
-    // Remove Entry
+    
+    // Remove Entry based on operator index
     removeEntry = (index, answer) => {
         entries.splice(index + 2, 0, answer);
         entries.splice(index - 1, 3);
@@ -75,22 +75,35 @@ function evaluate() {
         return answer;
     }
 
-    // Perform calculation till evaluations is length 1
-    let i = -1;
     while (entries.length > 1) {
-        if (entries.includes("*")) {
-            i = entries.indexOf("*");
-            removeEntry(i, multiply(i))
-        } else if (entries.includes("/")) {
-            i = entries.indexOf("/");
-            removeEntry(i, divide(i))
-        }
-        else if (entries.includes("+")) {
-            i = entries.indexOf("+")
-            removeEntry(i, sum(i))
-        } else if (entries.includes("-")) {
-            i = entries.indexOf("-")
-            removeEntry(i, diff(i))
+        if (!entries.includes("*") && !entries.includes("/")) {
+            for (let entry of entries) {
+                let i = entries.indexOf(entry);
+                switch (entry) {
+                    case "+":
+                        removeEntry(i, sum(i))
+                        break;
+                    case "-":
+                        removeEntry(entries.indexOf(entry), diff(i))
+                        break;
+                    default:
+                        continue;
+                }
+            }
+        } else {
+            for (let entry of entries) {
+                let i = entries.indexOf(entry);
+                switch (entry) {
+                    case "*":
+                        removeEntry(entries.indexOf(entry), multiply(i))
+                        break;
+                    case "/":
+                        removeEntry(entries.indexOf(entry), divide(i))
+                        break;
+                    default:
+                        continue;
+                }
+            }
         }
     }
     return entries.pop();
@@ -156,6 +169,7 @@ function validateInput(event) {
                 if (!isNaN(TEMP)) ENTRIES.push(TEMP);
                 if (!isNaN(ENTRIES[-1])) ENTRIES.splice(-1, 1);
                 // Complete Evaluation
+                
                 completeEval();
                 break;
             case "%":
