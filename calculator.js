@@ -1,29 +1,38 @@
+// Globals denoted with CAPS
 let TOTAL = 0;
 let TEMP = "";
 let ENTRIES = [];
 let HISTORY = [];
 
+// Push value to Entry
 
+// Change value of Display Input
+// Update result Display on top of Input
+// Clears The top display
+// Clears Whole Display
+// Clears all Input
+// Performs evaluation of all entries follwing EDMAS
 function evaluate() {
     let entries = [...ENTRIES];
 
+    // Remove Entry
     removeEntry = (index, answer) => {
         entries.splice(index + 2, 0, answer);
         entries.splice(index - 1, 3);
     }
-
+    // Basic Sum
     sum = (i) => {
         return Number(entries[i - 1]) + Number(entries[i + 1]);
     }
-
+    // Basic Subtract
     diff = (i) => {
         return Number(entries[i - 1]) - Number(entries[i + 1]);
     }
-
+    // Basic Multiply
     multiply = (i) => {
         return Number(entries[i - 1]) * Number(entries[i + 1]);
     }
-
+    // Divide, reduce long floats
     divide = (i) => {
         let answer = Number(entries[i - 1]) / Number(entries[i + 1]);
         if (typeof answer === 'number' && !Number.isInteger(answer)) {
@@ -32,6 +41,7 @@ function evaluate() {
         return answer;
     }
 
+    // Perform calculation till evaluations is length 1
     let i = -1;
     while (entries.length > 1) {
         if (entries.includes("*")) {
@@ -52,8 +62,10 @@ function evaluate() {
     return entries.pop();
 }
 
-function sortEval(value) {
+// Handler that filters input values
+    // Get button value
 
+    // Completes evaluation
     completeEval = () => {
         TOTAL = evaluate();
         updateDisplay();
@@ -63,13 +75,14 @@ function sortEval(value) {
         TOTAL = 0;
         HISTORY.push(TOTAL)
         if (typeof TEMP && !Number.isInteger(TEMP)) {
+        // Updates Input to Answer
             updateInput(TEMP.toFixed(4))
         } else {
             updateInput(TEMP);
         }
     }
 
-    switch (value) {
+    // Adds Entry and updates display
         case "=":
             if (!isNaN(TEMP)) ENTRIES.push(TEMP);
             if (!isNaN(ENTRIES[-1])) ENTRIES.splice(-1, 1);
@@ -84,7 +97,7 @@ function sortEval(value) {
     }
 }
 
-function validateInput(event) {
+    // Check for numbers first then check for operators
     const value = event.target.value;
     //REGEX
     const regOperators = /[\/*+\-]/;
@@ -94,7 +107,7 @@ function validateInput(event) {
         TEMP += value;
         updateInput(TEMP)
     } else if (value.match(regOperators)) {
-        // Operators go here
+        // Add entries based on operator value
         addEntry(value);
         updateDisplay();
         clearInput();
@@ -109,7 +122,7 @@ function validateInput(event) {
         updateInput(TEMP)
     }
     else {
-        // All Invalid values
+                updateInput("NaN")
         updateInput("NaN")
     }
 }
