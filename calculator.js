@@ -97,7 +97,9 @@ function evaluate() {
 }
 
 // Handler that filters input values
+function validateInput(event) {
     // Get button value
+    const value = event.target.value;
 
     // Completes evaluation
     completeEval = () => {
@@ -108,8 +110,9 @@ function evaluate() {
         TEMP = TOTAL;
         TOTAL = 0;
         HISTORY.push(TOTAL)
-        if (typeof TEMP && !Number.isInteger(TEMP)) {
+
         // Updates Input to Answer
+        if (typeof TEMP === Number && !Number.isInteger(TEMP)) {
             updateInput(TEMP.toFixed(4))
         } else {
             updateInput(TEMP);
@@ -117,92 +120,65 @@ function evaluate() {
     }
 
     // Adds Entry and updates display
-        case "=":
-            if (!isNaN(TEMP)) ENTRIES.push(TEMP);
-            if (!isNaN(ENTRIES[-1])) ENTRIES.splice(-1, 1);
-            completeEval();
-            break;
-        case "AC":
-            clearAll();
-            break;
-        case "CE":
-            clearInput();
-            break;
-    }
-}
-
-    // Check for numbers first then check for operators
-    const value = event.target.value;
-    //REGEX
-    const regOperators = /[\/*+\-]/;
-    const regEval = /[CE|AC|=]/
-
-    if (!isNaN(value)) {
-        TEMP += value;
-        updateInput(TEMP)
-    } else if (value.match(regOperators)) {
-        // Add entries based on operator value
+    completeEntry = (value) => {
         addEntry(value);
         updateDisplay();
         clearInput();
-    } else if (value.match(regEval)) {
-        // Evaluation and Deletion
-        sortEval(value);
-    } else if (value === "%") {
-        TEMP = TEMP / 100;
-        updateInput(TEMP);
-    } else if (value === '.') {
-        TEMP += '.'
+    }
+
+    // Check for numbers first then check for operators
+    if (!isNaN(value)) {
+        TEMP += value;
         updateInput(TEMP)
-    }
-    else {
+    } else {
+        // Add entries based on operator value
+        switch (value) {
+            case "/":
+                completeEntry(value)
+                break;
+            case "*":
+                completeEntry(value)
+                break;
+            case "-":
+                completeEntry(value)
+                break;
+            case "+":
+                completeEntry(value)
+                break;
+            case "CE":
+                clearInput();
+                break;
+            case "AC":
+                clearAll();
+                break;
+            case "=":
+                if (!isNaN(TEMP)) ENTRIES.push(TEMP);
+                if (!isNaN(ENTRIES[-1])) ENTRIES.splice(-1, 1);
+                completeEval();
+                break;
+            case "%":
+                TEMP = TEMP / 100;
+                updateInput(TEMP);
+                break;
+            case '.':
+                TEMP += '.'
+                updateInput(TEMP)
+                break;
+            default:
                 updateInput("NaN")
-        updateInput("NaN")
+                break;
+        }
     }
 }
 
-function addEntry(value) {
-    ENTRIES.push(TEMP);
-    ENTRIES.push(value);
-}
-
-function updateInput(value) {
-    document.querySelector(".calc-head input").value = value;
-}
-
-function updateDisplay() {
-    let resultDisplay = document.querySelector('.result');
-    resultDisplay.textContent = ENTRIES.join(" ") + " = ";
-}
-
-function clearDisplay() {
-    let resultDisplay = document.querySelector('.result');
-    resultDisplay.textContent = "";
-}
-
-function clearAll() {
-    ENTRIES = []
-    TOTAL = 0;
-    clearInput();
-    clearDisplay();
-    return;
-}
-
-function clearInput() {
-    TEMP = "";
-    updateInput(TEMP);
-    return;
-}
-
+// Init us the main function to be called at the start
 function init() {
     let calcBody = document.querySelector('.calc-body');
-    let input = document.querySelector(".calc-head input");
-    input.addEventListener('input', validateInput);
-
-    // Check Input
+    // Add event listeners to all buttons
     for (let child of calcBody.children) {
         child.addEventListener('click', validateInput);
     }
 }
 
+// Init Called
 init();
