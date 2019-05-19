@@ -89,13 +89,14 @@ button:hover {
     background-color: white;
     width: auto;
     display: grid;
-    max-width: 20vh;
+    max-width: 40vh;
     min-width: 10vh;
     min-height: 50px;
     border-radius: 10px;
     border: 1px solid #e6e6e6;
     grid-template-rows: 10px;
     position: absolute;
+    overflow-x: hidden;
 }
 
 .calc-history button{
